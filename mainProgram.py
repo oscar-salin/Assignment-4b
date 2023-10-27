@@ -11,20 +11,31 @@ for i in range(len(finnish_cities)):
     city = random.choice(finnish_cities)
     finnish_cities.remove(city)
     temperature = random.randint(-15, 30) 
-    weather.append({str(city): temperature})
+    weather.append({city: temperature})
 
-print(weather)
+# print(weather)
 
+
+def print_options():
+    print("\n")
+    print("List all cities: 1")
+    print("Search based on city: 2")
 
 def main():
     while True:
+        print_options()
         try:
-            user_input = float(input("Please enter 1: "))
-            print("Here is the weather data:", weather)
-        except ValueError:
-            user_input = input("Invalid input. Please enter a number (or 'q' to quit): ")
-            if user_input.lower() == 'q':
+            user_input = input("Input: ")
+            if user_input.lower() == "q":
                 break
+            user_input = int(user_input)
+
+            if user_input == 1:
+                print("Here is the weather data:", weather)
+            if user_input == 2:
+                raise ValueError()
+        except ValueError:
+            print("Please use a valid option or 'q' to quit")
 
 if __name__ == "__main__":
     main()
