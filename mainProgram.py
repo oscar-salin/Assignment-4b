@@ -1,5 +1,6 @@
 import random
-
+from listWeather import *
+from clearConsole import *
 
 """
 Generate weather data
@@ -18,24 +19,34 @@ for i in range(len(finnish_cities)):
 
 def print_options():
     print("\n")
+    print("Quit program: q")
     print("List all cities: 1")
-    print("Search based on city: 2")
+    # print("Search based on city: 2")
+
 
 def main():
+    cls()
     while True:
-        print_options()
-        try:
-            user_input = input("Input: ")
-            if user_input.lower() == "q":
-                break
-            user_input = int(user_input)
 
-            if user_input == 1:
-                print("Here is the weather data:", weather)
-            if user_input == 2:
-                raise ValueError()
-        except ValueError:
-            print("Please use a valid option or 'q' to quit")
+        print_options()
+
+        user_input = input("Input: ")
+        if user_input.lower() == "q":
+            break
+
+        if user_input == "1":
+            cls()
+            list_weather(weather)
+            cls()
+        # elif user_input == "2":
+        #     raise ValueError()
+        
+
+        else:
+            cls()
+            print("Please input a correct option or 'q' to quit")
+        
+        user_input = ""
 
 if __name__ == "__main__":
     main()
