@@ -1,6 +1,7 @@
 import random
 from listWeather import *
 from clearConsole import *
+from searchList import *
 
 """
 Generate weather data
@@ -21,7 +22,7 @@ def print_options():
     print("\n")
     print("Quit program: q")
     print("List all cities: 1")
-    # print("Search based on city: 2")
+    print("Search based on city: 2")
 
 
 def main():
@@ -29,24 +30,18 @@ def main():
     while True:
 
         print_options()
+        user_input = input("\nInput: ")
 
-        user_input = input("Input: ")
         if user_input.lower() == "q":
             break
-
         if user_input == "1":
-            cls()
             list_weather(weather)
-            cls()
-        # elif user_input == "2":
-        #     raise ValueError()
-        
+        elif user_input == "2":
+            searchList(weather)
 
         else:
             cls()
             print("Please input a correct option or 'q' to quit")
-        
-        user_input = ""
 
 if __name__ == "__main__":
     main()
