@@ -8,5 +8,5 @@ def list_weather(weather):
     for i in weather:
         name, temp = list(i.items())[0]
         print(f"{name}: {temp}")
-    input("'q' to go back: ")
+    input("\n'q' to go back: ")
     cls()

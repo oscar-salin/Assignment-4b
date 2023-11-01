@@ -4,6 +4,7 @@ from clearConsole import *
 from searchList import *
 from addToList import *
 from removeFromList import *
+from sortList import *
 
 weather = []
 
@@ -23,12 +24,12 @@ def genData():
 
 
 def print_options():
-    print("\n")
     print("Quit program: q")
     print("List all cities: 1")
     print("Search based on city: 2")
     print("Add a city & temperature: 3")
     print("Remove a city & temperature: 4")
+    print("Sort the list: 5")
 
 def updateWeather(newWeather):
     global weather
@@ -44,6 +45,8 @@ def main():
         match user_input:
             case "q":
                 break
+            case "Q":
+                break
             case "1":
                 list_weather(weather)
             case "2":
@@ -52,6 +55,9 @@ def main():
                 updateWeather(addedList(weather))
             case "4":
                 updateWeather(removedList(weather))
+            case "5":
+                updateWeather(sortedList(weather))
+                # list_weather(weather)
             case _:
                 cls()
                 print("Please input a correct option or 'q' to quit")            
