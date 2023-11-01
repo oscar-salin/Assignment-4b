@@ -1,9 +1,10 @@
 # sortList.py
 # Sorts the list based on parameters
 # Oscar Salin
-from clearConsole import *
+from clearConsole import cls
 
-def sortedList(oldList):
+def sort_list(old_list):
+    """Sorts list based on user input"""
     cls()
     def get_values(d):
         return list(d.values())[0]
@@ -12,13 +13,13 @@ def sortedList(oldList):
     direction = input("Please input asc/desc:")
     cls()
     if direction == "asc":
-        sorted_list = sorted(oldList, key=get_values)
+        sorted_list = sorted(old_list, key=get_values)
         print("sorted list in ascending order")
     elif direction == "desc":
-        sorted_list = sorted(oldList, key=get_values, reverse=True)
+        sorted_list = sorted(old_list, key=get_values, reverse=True)
         print("sorted list in descending order")
     else:
-        sorted_list = oldList
+        sorted_list = old_list
         print("Invalid input. List not sorted")
 
 

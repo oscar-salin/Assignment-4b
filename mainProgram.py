@@ -1,29 +1,40 @@
+"""mainProgram.py"""
 import random
-from listWeather import *
-from clearConsole import *
-from searchList import *
-from addToList import *
-from removeFromList import *
-from sortList import *
+from listWeather import list_weather
+from clearConsole import cls
+from searchList import search_list
+from addToList import added_list
+from removeFromList import removed_list
+from sortList import sort_list
 
 weather = []
 
-def genData():
+def gen_data():
     """
     Generate weather data
     """
-    finnish_cities = ["Helsinki", "Espoo", "Tampere", "Vantaa", "Oulu", "Turku", "Jyväskylä", "Lahti", "Kuopio", "Pori", "Kouvola", "Joensuu", "Lappeenranta", "Hämeenlinna", "Vaasa", "Seinäjoki", "Rovaniemi", "Mikkeli", "Kotka", "Salonkylä", "Porvoo", "Lohja", "Hyvinkää", "Nurmijärvi", "Järvenpää", "Rauma", "Kirkkonummi", "Tuusula", "Kerava", "Hanko", "Sodankylä"]
 
-    for i in range(len(finnish_cities)):
+    finnish_cities = ["Helsinki", "Espoo", "Tampere", "Vantaa", "Oulu", "Turku",
+                        "Jyväskylä", "Lahti", "Kuopio", "Pori", "Kouvola",
+                        "Joensuu", "Lappeenranta", "Hämeenlinna", "Vaasa", "Seinäjoki",
+                        "Rovaniemi", "Mikkeli", "Kotka", "Salonkylä", "Porvoo", "Lohja", 
+                        "Hyvinkää", "Nurmijärvi","Järvenpää", "Rauma", "Kirkkonummi", 
+                        "Tuusula", "Kerava", "Hanko", "Sodankylä"]
+
+    for _ in range(len(finnish_cities)):
         city = random.choice(finnish_cities)
         finnish_cities.remove(city)
-        temperature = random.randint(-15, 30) 
+        temperature = random.randint(-15, 30)
         weather.append({city: temperature})
 
     print(weather)
 
 
 def print_options():
+    """
+    prints all options
+    """
+    print()
     print("Quit program: q")
     print("List all cities: 1")
     print("Search based on city: 2")
@@ -31,11 +42,16 @@ def print_options():
     print("Remove a city & temperature: 4")
     print("Sort the list: 5")
 
-def updateWeather(newWeather):
+def update_weather(new_weather):
+    """
+    modifies global weather variable
+    """
+    # pylint: disable=locally-disabled, global-statement
     global weather
-    weather = newWeather
+    weather = new_weather
 
 def main():
+    """Main loop"""
     cls()
     while True:
 
@@ -50,18 +66,17 @@ def main():
             case "1":
                 list_weather(weather)
             case "2":
-                searchList(weather)
+                search_list(weather)
             case "3":
-                updateWeather(addedList(weather))
+                update_weather(added_list(weather))
             case "4":
-                updateWeather(removedList(weather))
+                update_weather(removed_list(weather))
             case "5":
-                updateWeather(sortedList(weather))
-                # list_weather(weather)
+                update_weather(sort_list(weather))
             case _:
                 cls()
-                print("Please input a correct option or 'q' to quit")            
+                print("Please input a correct option or 'q' to quit\n")            
 
 if __name__ == "__main__":
-    genData()
+    gen_data()
     main()
