@@ -3,6 +3,7 @@ from listWeather import *
 from clearConsole import *
 from searchList import *
 from addToList import *
+from removeFromList import *
 
 weather = []
 
@@ -27,6 +28,7 @@ def print_options():
     print("List all cities: 1")
     print("Search based on city: 2")
     print("Add a city & temperature: 3")
+    print("Remove a city & temperature: 4")
 
 def updateWeather(newWeather):
     global weather
@@ -48,6 +50,8 @@ def main():
                 searchList(weather)
             case "3":
                 updateWeather(addedList(weather))
+            case "4":
+                updateWeather(removedList(weather))
             case _:
                 cls()
                 print("Please input a correct option or 'q' to quit")            

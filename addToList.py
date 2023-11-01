@@ -2,7 +2,6 @@
 # Adds a weather object from input from the user to the weather list
 # Oscar Salin
 from clearConsole import *
-from mainProgram import updateWeather
 
 def addedList(oldList):
     # cls()
@@ -16,7 +15,8 @@ def addedList(oldList):
             print("Invalid input. Please enter a valid integer.")
     
     new_obj = {key: value}
-    print(new_obj)
-    new_list = oldList.append(new_obj)
+    cls()
+    print(f"Added city: {key} with temperature: {value}")
+    oldList.append(new_obj)
     return oldList
 
